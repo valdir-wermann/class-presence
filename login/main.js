@@ -14,7 +14,6 @@ const entrar = () => {
     if (tipo.value === 'student') {
         path = '/api/students/login';
     } else path = '/api/teachers/login';
-    console.log({ url, path })
 
     fetch(url + path, {
         method: 'POST',
@@ -32,7 +31,7 @@ const entrar = () => {
             localStorage.setItem('authorization', tipo.value + ' ' + res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
             alert('Conectado com sucesso!');
-            window.location.assign(`/home/${tipo.value}`);
+            window.location.replace(`${window.location.origin}/home/${tipo.value}/`);
         });
 }
 

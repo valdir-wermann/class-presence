@@ -4,7 +4,7 @@ const attendanceList = document.querySelector('.presencas');
 const onload = () => {
     document.querySelector('#username').innerHTML = JSON.parse(localStorage.getItem('user')).name;
     //fetch minhas turmas
-    fetch('http://localhost:3000/api/classes', {
+    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const onload = () => {
         });
 
     //fetch presencas
-    fetch(`http://localhost:3000/api/attendances/?groupBy=classId`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?groupBy=classId`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const onload = () => {
 
 const leave = () => {
     localStorage.clear();
-    window.location.assign('/frontend/login');
+    window.location.assign('../login/');
 }
 
 window.addEventListener('load', onload);

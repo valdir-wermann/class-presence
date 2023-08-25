@@ -5,20 +5,22 @@ const onload = async () => {
     //     alert('Você não pode visualizar essa página! Por favor,')
     // }
 
-    fetch('http://localhost:3000/api/classes?teacherId=own', {
+    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes?teacherId=own', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        }
+        },
+        mode: 'no-cors'
     })
         .then(res => {
+            console.log(res.status);
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Sua sessão expirou. Redirecionando para página de login.');
                 localStorage.clear();
-                window.location.assign('../../login');
+                window.location.replace('../../login');
             }
         })
         .then(response => {

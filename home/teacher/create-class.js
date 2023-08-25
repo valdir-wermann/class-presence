@@ -6,7 +6,7 @@ const submitBtn = document.querySelector('#submit-btn');
 
 const createClass = () => {
     const body = JSON.stringify({ name: nameInput.value });
-    fetch('http://localhost:3000/api/classes', {
+    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ const createClass = () => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Você não tem permissão para executar esta ação. Te redirecionando para sua página inicial.');
-                window.location.assign('../student');
+                window.location.assign('../student/');
             }
             throw new Error(res);
         })
