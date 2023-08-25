@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background-color: #F5F6F8;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F6F8;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.informations {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown>.btn {
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.dropdown>.content {
+    display: none;
+    position: absolute;
+    background-color: #abafb6;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.dropdown>.content>.links {
+    color: #F5F6F8;
+    text-decoration: none;
+    display: flex;
+    justify-content: baseline;
+}
+
+.content>.links:hover {
+    cursor: pointer;
+    background-color: #8b8f95;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions {
+    background-color: #03436d;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #abafb6;
+    text-align: center;
+}
+
+.action span {
+    text-decoration: none;
+    color: #F5F6F8;
+}
+
+.subtitle {
+    margin-left: 8px;
+}
+
+.classes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.classes>h2 {
+    grid-column: 1/4;
+    margin-left: 12px;
+}
+
+.class {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #03436d;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 4px;
+    border: 2px solid #abafb6;
+    color: #F5F6F8;
+    overflow: hidden;
+}
+
+.class .name {
+    font-size: 24px;
+    word-break: break-all;
+}
+
+.class .more {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.class .more a {
+    color: #F5F6F8;
+    text-decoration: none;
+    background-color: #abafb6;
+    border-radius: 6px;
+    padding: 6px;
+}

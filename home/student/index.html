@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="medias.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Início</h1>
+        </div>
+
+        <div class="user-info">
+            <div class="dropdown">
+                <div class="btn">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                    <span id="username"></span>
+                    <span class="material-symbols-outlined">
+                        expand_more
+                    </span>
+                </div>
+                <div class="content">
+                    <span class="links" id="leave">Sair<span class="material-symbols-outlined">
+                            logout
+                        </span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="informations">
+            <h2>Turmas:</h1>
+                <div class="classes"></div>
+                <h2>Presenças:</h2>
+                <span id="reportGeral">Relatório</span>
+                <div class="presencas"></div>
+        </div>
+    </div>
+</body>
+
+<script src="./main.js"></script>
+<script src="./js/report.js"></script>
+
+</html>

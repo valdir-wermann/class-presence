@@ -1,0 +1,76 @@
+#modal {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #8b8f9582;
+}
+
+.right {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.right>button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-color: #c0392b;
+    color: #F5F6F8;
+    margin-right: 24px;
+}
+
+#modal>.form {
+    background-color: #03436d;
+    color: #F5F6F8;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 35%;
+    margin-top: 6px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field>span {
+    color: #F5F6F8;
+    font-size: 18px;
+    text-align: center;
+}
+
+.field>select {
+    width: 60%;
+    background-color: #033353;
+    color: #F5F6F8;
+    padding: 6px 6px 0px 6px;
+    font-size: 16px;
+    border-bottom: 1.5px solid #F5F6F8;
+    margin-top: 12px;
+}
+
+.modificar {
+    display: flex;
+    align-items: center;
+    margin-top: 72px;
+}
+
+.modificar>button {
+    background-color: #033353;
+    color: #F5F6F8;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 6px;
+}

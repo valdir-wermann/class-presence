@@ -1,0 +1,72 @@
+.modal {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #8b8f9582;
+}
+
+.form {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #03436d;
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.right {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.right>button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-color: #c0392b;
+    color: #F5F6F8;
+    margin-right: 24px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input>span {
+    color: #F5F6F8;
+    font-size: 18px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.input>input {
+    width: 60%;
+    background-color: #033353;
+    color: #F5F6F8;
+    padding: 6px 6px 0px 6px;
+    font-size: 16px;
+    border-bottom: 1.5px solid #F5F6F8;
+}
+
+.doAction {
+    background-color: #033353;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 24px;
+    color: #F5F6F8;
+    margin-top: 48px;
+}

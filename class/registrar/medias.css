@@ -1,0 +1,22 @@
+@media screen and (max-width: 768px) {
+    #title {
+        font-size: 14px;
+        padding: 12px;
+        width: 90%;
+    }
+
+    .field {
+        width: max-content;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #description>textarea {
+        width: 100%;
+    }
+
+    .field {
+        width: 90%;
+    }
+}

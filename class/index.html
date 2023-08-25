@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turma</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="medias.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="info">
+            <div class="center">
+                <div class="head">
+                    <div class="title">
+                        <h1>Turma</h1>
+                    </div>
+                    <div id="teachers-div">
+                        <span id="teachers-span">Professores:</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <div class="action" id="adicionar-alunos">
+                    <span>Adicionar Alunos</span>
+                </div>
+                <div class="action" id="remover-alunos">
+                    <span>Remover Alunos</span>
+                </div>
+                <div class="action" id="adicionar-professores">
+                    <span>Adicionar Professores</span>
+                </div>
+                <div class="action" id="remover-professores">
+                    <span>Remover Professores</span>
+                </div>
+                <div class="action" id="excluir-turma">
+                    <span>Excluir Sala</span>
+                </div>
+                <div class="action" id="registrar-presenca">
+                    <span>Registrar presença</span>
+                </div>
+            </div>
+
+            <h2 id="subtitle">Alunos:</h2>
+
+            <ul class="alunos-lista"></ul>
+        </div>
+    </div>
+
+    <div class="modals">
+        <div class="modal" id="add-student-modal">
+            <div class="form">
+                <div class="right">
+                    <button id="fechar-add-alunos">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="input">
+                    <span>Email ou Cartão dos Alunos (separado por ,):</span>
+                    <input id="add-emails-alunos" type="text" />
+                </div>
+                <button class="doAction" id="add-alunos-btn">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="modal" id="remove-student-modal">
+            <div class="form">
+                <div class="right">
+                    <button id="fechar-remove-alunos">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="input">
+                    <span>Email ou Cartão dos Alunos (separado por ,):</span>
+                    <input id="remove-emails-alunos" type="text" />
+                </div>
+                <button class="doAction" id="remove-alunos-btn">Remover</button>
+            </div>
+        </div>
+
+        <div class="modal" id="add-teacher-modal">
+            <div class="form">
+                <div class="right">
+                    <button id="fechar-add-teacher">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="input">
+                    <span>Email ou Cartão dos Professores (separado por ,):</span>
+                    <input id="add-emails-professores" type="text" />
+                </div>
+                <button class="doAction" id="add-professor-btn">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="modal" id="remove-teacher-modal">
+            <div class="form">
+                <div class="right">
+                    <button id="fechar-remove-professores">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="input">
+                    <span>Email ou Cartão dos Professores (separado por ,):</span>
+                    <input id="remove-emails-professores" type="text" />
+                </div>
+                <button class="doAction" id="remove-professores-btn">Remover</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./main.js"></script>
+
+<script src="./js/add-student.js"></script>
+<script src="./js/remove-student.js"></script>
+<script src="./js/add-teacher.js"></script>
+<script src="./js/remove-teacher.js"></script>
+<script src="./js/exclude-class.js"></script>
+<script src="./js/registrar-presenca.js"></script>
+
+</html>

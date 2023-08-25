@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="medias.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="info">
+            <h1 id="studentName">Nome:</h1>
+            <span id="studentEmail">E-mail:</span>
+            <span id="studentCard">Cartão:</span>
+        </div>
+
+        <div class="actions">
+            <div class="action" id="reportGeral"><span>Relatório Geral</span></div>
+        </div>
+
+        <h1 class="subtitle">Presenças:</h1>
+        <div class="presencas"></div>
+    </div>
+
+    <div id="modal">
+        <div class="form">
+            <div class="right">
+                <button id="close-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="field">
+                <span>Você deseja alterar o tipo de presença para qual tipo?</span>
+                <select id="novoTipo">
+                    <option value="presente">Presente</option>
+                    <option value="atrasado">Atrasado</option>
+                    <option value="ausente">Ausente</option>
+                </select>
+            </div>
+            <div class="modificar">
+                <button>Modificar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/exclude.js"></script>
+<script src="./main.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./js/report.js"></script>
+
+</html>

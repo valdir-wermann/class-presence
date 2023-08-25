@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="medias.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="login-box">
+            <div id="title">
+                <h1>Entrar</h1>
+                <div id="redirect">
+                    <a href="../registrar/index.html">ou Registrar</a>
+                </div>
+            </div>
+
+            <div id="fields">
+                <div class="field">
+                    <span>Email ou Cartão:</span>
+                    <input id="email" type="text">
+                </div>
+                <div class="field">
+                    <span>Senha:</span>
+                    <input id="senha" type="password">
+                </div>
+                <div class="field">
+                    <select id="tipo">
+                        <option value="student" selected>Aluno</option>
+                        <option value="teacher">Professor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="entrar">
+                <button id="entrar-btn">Entrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+
+</html>

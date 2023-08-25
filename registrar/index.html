@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="medias.css">
+    <title>Registrar</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="login-box">
+            <div id="title">
+                <h1>Registrar</h1>
+                <div id="redirect">
+                    <a href="../login/index.html">ou Entrar</a>
+                </div>
+            </div>
+
+            <div id="fields">
+                <div class="field">
+                    <select id="tipo">
+                        <option value="student" selected>Aluno</option>
+                        <option value="teacher">Professor</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <span>Nome:</span>
+                    <input id="nome" type="text">
+                </div>
+                <div class="field">
+                    <span>Email:</span>
+                    <input id="email" type="text">
+                </div>
+                <div class="field">
+                    <span>Cartão:</span>
+                    <input id="cartao" type="text">
+                </div>
+                <div class="field">
+                    <span>Senha:</span>
+                    <input id="senha" type="password">
+                </div>
+                <div class="field codigo-field">
+                    <span>Código para criação:</span>
+                    <input id="codigo" type="number">
+                </div>
+            </div>
+
+            <div id="entrar">
+                <button id="entrar-btn">Registrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+
+</html>

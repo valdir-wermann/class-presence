@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="medias.css">
+</head>
+
+<body>
+    <div class="center">
+        <div id="title">
+            <h1>Registrar presença:</h1>
+        </div>
+    </div>
+
+    <div class="data center">
+        <input type="datetime-local" id="date">
+        <div class="field"><span>Número de períodos:</span><input type="number" id="periodsInput"></div>
+        <div class="field" id="description"><span>Descrição da aula:</span><textarea type="text"
+                id="descriptionInput"></textarea>
+        </div>
+    </div>
+
+    <div class="center">
+        <h2 id="subtitle">Alunos:</h2>
+    </div>
+    <div class="students"></div>
+
+    <div class="registrar center">
+        <button>Registrar presenças</button>
+    </div>
+</body>
+<script src="./main.js"></script>
+
+</html>

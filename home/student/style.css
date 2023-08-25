@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background-color: #F5F6F8;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F6F8;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown>.btn {
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.dropdown>.content {
+    display: none;
+    position: absolute;
+    background-color: #abafb6;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.dropdown>.content>.links {
+    color: #F5F6F8;
+    text-decoration: none;
+    display: flex;
+    justify-content: baseline;
+}
+
+.content>.links:hover {
+    cursor: pointer;
+    background-color: #8b8f95;
+}
+
+.dropdown:hover .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.informations {
+    margin: 0px 36px;
+}
+
+.subtitle {
+    margin-left: 12px;
+    grid-column: 1 / 4;
+}
+
+.classes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.class {
+    background-color: #03436d;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 4px;
+    border: 2px solid #abafb6;
+    color: #F5F6F8;
+    overflow: hidden;
+}
+
+.class .name {
+    font-size: 24px;
+}
+
+.class .more {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.class .more a {
+    color: #F5F6F8;
+    text-decoration: none;
+    background-color: #abafb6;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+.informations h2 {
+    margin-bottom: 12px;
+}
+
+#reportGeral {
+    cursor: pointer;
+    background-color: #03436d;
+    border: 1.5px solid #8b8f95;
+    color: #F5F6F8;
+    padding: 6px 4px;
+}
+
+#reportGeral:hover {
+    color: #abafb6;
+}
+
+.presencas {
+    background-color: #03436d;
+    padding: 8px;
+    border-radius: 12px;
+    color: #F5F6F8;
+    margin-top: 12px;
+}
+
+.presenca {
+    padding: 6px;
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) min-content min-content;
+}
+
+.presenca:nth-child(even) {
+    background-color: #033353;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid #F5F6F8;
+    border-right: 1px solid #F5F6F8;
+    padding: 0px 2px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 2px;
+    border-right: 1px solid #F5F6F8;
+    font-size: 20px;
+}
+
+.description {
+    border-right: 1px solid #F5F6F8;
+    padding: 0px 2px;
+}
+
+.type {
+    width: 106.02px;
+}
+
+.modify>span:hover {
+    cursor: pointer;
+    color: #abafb6;
+}

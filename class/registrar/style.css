@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background-color: #F5F6F8;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    width: fit-content;
+    margin: 12px 0;
+    text-align: center;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #03436d;
+    color: #F5F6F8;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+}
+
+.data>.field {
+    background-color: #03436d;
+    color: #F5F6F8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.data>.field>span {
+    margin-right: 8px;
+}
+
+.data>.field>input {
+    background-color: #033353;
+    color: #F5F6F8;
+    border-bottom: 1.5px solid #F5F6F8;
+    padding-left: 4px;
+}
+
+#description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#description>textarea {
+    width: 316.578px;
+    background-color: #F5F6F8;
+    resize: none;
+    padding-left: 4px;
+}
+
+#date {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #03436d;
+    color: #F5F6F8;
+}
+
+.students {
+    margin: 12px;
+}
+
+.student {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1.5px solid #03436d;
+}
+
+.student>select {
+    border-left: 1.5px solid #03436d;
+    background-color: #F5F6F8;
+    font-size: 14px;
+}
+
+.student>span {
+    margin-left: 8px;
+    font-size: 14px
+}
+
+.registrar>button {
+    cursor: pointer;
+    background-color: #03436d;
+    color: #F5F6F8;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#date::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+#date::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

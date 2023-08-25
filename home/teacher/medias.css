@@ -1,0 +1,5 @@
+@media screen and (max-width: 425px) {
+    .class>.name {
+        font-size: 12px;
+    }
+}

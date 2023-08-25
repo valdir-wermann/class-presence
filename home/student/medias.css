@@ -1,0 +1,53 @@
+@media screen and (max-width: 768px) {
+    .class>.name {
+        font-size: 12px;
+    }
+
+    .info>h1 {
+        font-size: 18px;
+    }
+
+    .presenca {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+        margin-bottom: 8px;
+        border: 1px solid #f5f6f8;
+    }
+
+    .column {
+        border: 0;
+        border-bottom: 1px solid #f5f6f8;
+    }
+
+    .description {
+        border: 0;
+        border-bottom: 1px solid #f5f6f8;
+    }
+
+    .type {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        border-bottom: 1px solid #f5f6f8;
+    }
+
+    .modify {
+        padding: 0;
+        border: 0;
+    }
+
+    .modify span {
+        width: 100%;
+        padding: 4px 2px;
+        text-align: center;
+        border-bottom: 1px solid #f5f6f8;
+    }
+
+    .modify span:nth-last-child(1) {
+        border: 0;
+    }
+
+    .modificar {
+        margin-top: 36px;
+    }
+}

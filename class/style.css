@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background-color: #F5F6F8;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F6F8;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
+}
+
+.head {
+    background-color: #03436d;
+    color: #F5F6F8;
+    padding: 12px;
+    border-radius: 12px;
+    width: 90%;
+}
+
+#teachers-div {
+    border-bottom: 1.5px solid #F5F6F8;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    margin-bottom: 24px;
+    margin: 0 calc(5% + 12px);
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #03436d;
+    color: #F5F6F8;
+    border: 2px solid #abafb6;
+    text-align: center;
+    cursor: pointer;
+}
+
+#subtitle {
+    margin: 0 calc(5% + 12px);
+}
+
+.alunos-lista {
+    margin-left: 24px;
+    list-style: none;
+    width: 90%;
+    margin: 0 5%;
+}
+
+.alunos-lista>.aluno {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1.5px solid #abafb6;
+    padding-left: 3px;
+    background-color: #03436d;
+}
+
+.aluno>a {
+    color: #F5F6F8;
+    text-decoration: none;
+}
+
+.aluno-hover>a:hover {
+    color: #abafb6;
+}
