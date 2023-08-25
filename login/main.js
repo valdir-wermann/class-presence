@@ -32,7 +32,7 @@ const entrar = () => {
             localStorage.setItem('authorization', tipo.value + ' ' + res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
             alert('Conectado com sucesso!');
-            window.location.assign(`/frontend/home/${tipo.value}`);
+            window.location.assign(`/home/${tipo.value}`);
         });
 }
 
