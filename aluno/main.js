@@ -14,7 +14,7 @@ const studentCard = document.querySelector('#studentCard');
 let student;
 
 const onload = () => {
-    fetch(`http://localhost:3000/api/students/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const onload = () => {
             studentCard.title = student.card;
         })
 
-    fetch(`http://localhost:3000/api/attendances/?studentId=${params.id}&groupBy=classId`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?studentId=${params.id}&groupBy=classId`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ var type;
 
 const onload = () => {
     // fetch class info and teacher info
-    fetch(`http://localhost:3000/api/classes/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const onload = () => {
             classTitle.innerHTML = `Turma ${clas.name}`;
             classTitle.title = `Turma ${clas.name}`;
 
-            fetch(`http://localhost:3000/api/teachers?ids=${clas.teacherId.join(',')}`, {
+            fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/teachers?ids=${clas.teacherId.join(',')}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const onload = () => {
         });
 
     //fetch students
-    fetch(`http://localhost:3000/api/students?classId=${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ const addTeachersBtn = document.querySelector('#add-professor-btn');
 
 const addTeachers = () => {
     const body = JSON.stringify({ identifiers: teacherEmailsInput.value });
-    fetch(`http://localhost:3000/api/classes/add_teacher/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/add_teacher/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

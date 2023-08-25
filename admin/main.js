@@ -8,7 +8,7 @@ const create = () => {
         password: password.value
     };
 
-    fetch(`http://localhost:3000/api/teacher_code/create`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/teacher_code/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

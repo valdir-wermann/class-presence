@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000';
+const url = 'http://localhost:https://causal-scorpion-rapidly.ngrok-free.app';
 
 const tipo = document.querySelector('#tipo');
 const nome = document.querySelector('#nome');

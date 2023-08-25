@@ -6,7 +6,7 @@ const removeTeacherBtn = document.querySelector('#remove-professores-btn');
 
 const removeTeachers = () => {
     const body = JSON.stringify({ identifiers: removeTeacherEmailsInput.value });
-    fetch(`http://localhost:3000/api/classes/remove_teacher/${params.id}`, {
+    fetch(`hthttps://causal-scorpion-rapidly.ngrok-free.app/api/classes/remove_teacher/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

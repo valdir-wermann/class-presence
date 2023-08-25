@@ -6,7 +6,7 @@ const updateBtn = document.querySelector('.modificar>button');
 let attendanceId;
 
 const update = () => {
-    fetch(`http://localhost:3000/api/attendances/${attendanceId}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${attendanceId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

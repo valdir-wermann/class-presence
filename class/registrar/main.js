@@ -16,7 +16,7 @@ const studentsList = document.querySelector('.students');
 const registrarBtn = document.querySelector('.registrar>button');
 
 const onload = () => {
-    fetch(`http://localhost:3000/api/classes/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const onload = () => {
         })
         .then(clas => {
             className.innerHTML = `Registrar presença: ${clas.name}`;
-            fetch(`http://localhost:3000/api/students?classId=${params.id}`, {
+            fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const registrar = () => {
     if (periodsInput.value < 0 || periodsInput.value === '') return alert('Digite uma quantidade de períodos válida!');
     if (dateInput.value === '') return alert('Digite uma data válida!');
 
-    fetch(`http://localhost:3000/api/attendances/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${params.id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

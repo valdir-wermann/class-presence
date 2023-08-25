@@ -3,7 +3,7 @@ const exclude = (e) => {
 
     if (ans == 1) {
         const id = e.target.id;
-        fetch(`http://localhost:3000/api/attendances/${id}`, {
+        fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

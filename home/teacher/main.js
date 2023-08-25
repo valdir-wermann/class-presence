@@ -1,10 +1,5 @@
+const classes = document.querySelector('.classes'); classes.innerHTML = '';
 const onload = async () => {
-    const classes = document.querySelector('.classes'); classes.innerHTML = '';
-
-    // if (localStorage.getItem('authorization').split(' ')[1] === 'student') {
-    //     alert('Você não pode visualizar essa página! Por favor,')
-    // }
-
     fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes?teacherId=own', {
         method: 'GET',
         headers: {
@@ -15,12 +10,11 @@ const onload = async () => {
         mode: 'no-cors'
     })
         .then(res => {
-            console.log(res.status);
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Sua sessão expirou. Redirecionando para página de login.');
                 localStorage.clear();
-                window.location.replace('../../login');
+                window.location.replace('../../login/');
             }
         })
         .then(response => {
@@ -39,7 +33,7 @@ const onload = async () => {
 
 const leave = () => {
     localStorage.clear();
-    window.location.assign('/frontend/login');
+    window.location.href = `${window.location.origin}/frontend/login`;
 }
 
 window.addEventListener('load', onload);

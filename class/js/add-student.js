@@ -6,7 +6,7 @@ const addStudentsBtn = document.querySelector('#add-alunos-btn');
 
 const addStudents = () => {
     const body = JSON.stringify({ identifiers: studentEmailsInput.value });
-    fetch(`http://localhost:3000/api/students/add_class/${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students/add_class/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

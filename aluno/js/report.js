@@ -1,7 +1,7 @@
 const reportButton = document.querySelector('#reportGeral');
 
 const makeReport = () => {
-    fetch(`http://localhost:3000/api/attendances/?count=true&studentId=${params.id}`, {
+    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?count=true&studentId=${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
