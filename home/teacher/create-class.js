@@ -13,13 +13,14 @@ const createClass = () => {
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
         },
-        body
+        body,
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Você não tem permissão para executar esta ação. Te redirecionando para sua página inicial.');
-                window.location.assign('../student/');
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             throw new Error(res);
         })

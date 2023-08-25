@@ -18,7 +18,8 @@ const entrar = () => {
     fetch(url + path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+        mode: 'no-cors'
     })
         .then(response => {
             if (response.ok) {
@@ -31,7 +32,7 @@ const entrar = () => {
             localStorage.setItem('authorization', tipo.value + ' ' + res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
             alert('Conectado com sucesso!');
-            window.location.replace(`${window.location.origin}/home/${tipo.value}/`);
+            window.location.replace(`${window.location.origin}/class-presence/home/${tipo.value}/`);
         });
 }
 

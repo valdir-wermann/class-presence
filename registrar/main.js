@@ -1,4 +1,4 @@
-const url = 'http://localhost:https://causal-scorpion-rapidly.ngrok-free.app';
+const url = 'https://causal-scorpion-rapidly.ngrok-free.app';
 
 const tipo = document.querySelector('#tipo');
 const nome = document.querySelector('#nome');
@@ -29,7 +29,8 @@ const registrar = () => {
     fetch(url + path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+        mode: 'no-cors'
     })
         .then(response => {
             if (response.ok) return response.json();
@@ -38,7 +39,7 @@ const registrar = () => {
         })
         .then(() => {
             alert('Registrado corretamente. Direcionando para a página de login.');
-            window.location.assign("../login/index.html");
+            window.location.assign("../login/");
         });
 }
 

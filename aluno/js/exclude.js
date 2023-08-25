@@ -9,13 +9,15 @@ const exclude = (e) => {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': localStorage.getItem('authorization')
-            }
+            },
+            mode: 'no-cors'
         })
             .then(res => {
                 if (res.ok) return res.json();
                 if (res.status === 401 || res.status === 403) {
-                    alert('Você não tem permissão para visualizar essa turma. Te redirecionando para sua página inicial.');
-                    window.location.assign('../home/teacher');
+                    alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
+                    localStorage.clear();
+                    window.location.href = `${window.location.origin}/class-presence/login`;
                 }
                 throw new Error(res);
             })

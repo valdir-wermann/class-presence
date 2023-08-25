@@ -15,7 +15,8 @@ const create = () => {
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();

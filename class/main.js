@@ -3,7 +3,7 @@ const params = Object.fromEntries(urlSearchParams.entries());
 
 if (!params.id) {
     alert('O id está faltando na URL. Redirecionando para página inicial.');
-    window.location.assign('../home/teacher');
+    window.location.href = `${window.location.origin}/class-presence/home/teacher/`;
 }
 
 const classTitle = document.querySelector('.title h1');
@@ -21,7 +21,8 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        }
+        },
+        mode: 'no-cors'
     })
         .then(res => {
             type = res.headers.get('user');
@@ -31,8 +32,9 @@ const onload = () => {
             }
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
-                alert('Você não tem permissão para visualizar essa turma. Te redirecionando para sua página inicial.');
-                window.location.assign('../home/teacher');
+                alert('Você não tem permissão para visualizar essa turma. Te redirecionando para página de login.');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             throw new Error(res);
         })
@@ -47,9 +49,15 @@ const onload = () => {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Authorization': localStorage.getItem('authorization')
-                }
+                },
+                mode: 'no-cors'
             }).then(res => {
                 if (res.ok) return res.json();
+                if (res.status === 401 || res.status === 403) {
+                    alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
+                    localStorage.clear();
+                    window.location.href = `${window.location.origin}/class-presence/login`;
+                }
                 throw new Error(res);
             })
                 .then(teachers => {
@@ -67,13 +75,15 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        }
+        },
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Você não tem permissão para visualizar essa turma. Te redirecionando para sua página inicial.');
-                window.location.assign('../home/');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             throw new Error(res);
         })
@@ -81,7 +91,7 @@ const onload = () => {
             if (students.length === 0) return studList.innerHTML = '<h2>Não há alunos na turma.</h2>';
             studList.innerHTML = '';
             let html;
-            if (type === 'teacher') { html = (student) => `<li class="aluno aluno-hover"><a href="/frontend/aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>` }
+            if (type === 'teacher') { html = (student) => `<li class="aluno aluno-hover"><a href="../aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>` }
             else { html = (student) => `<li class="aluno"><a title="${student.name}">${student.name}</a></li>` }
             students.forEach(student => {
                 studList.innerHTML += html(student);

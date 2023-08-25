@@ -13,14 +13,15 @@ const removeTeachers = () => {
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
         },
-        body
+        body,
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
-                alert('Você não tem permissão para fazer essa ação! Redirecionando para o login!');
+                alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
                 localStorage.clear();
-                window.location.assign('/frontend/login');
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             alert('Algo deu errado. Tente novamente ou revise o campo de digitação!');
             throw new Error(res);

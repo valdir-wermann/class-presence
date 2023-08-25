@@ -10,15 +10,17 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        }
+        },
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
-                alert('Sua sessão expirou. Redirecionando para página de login.');
+                alert('Você não tem acesso a esta página. Redirecionando para página de login.');
                 localStorage.clear();
-                window.location.assign('../../login');
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
+            throw new Error(res);
         })
         .then(classes => {
             if (classes.length == 0) classesDiv.innerHTML = `<h2 class="subtitle">Não há turmas que você participa.</h2>`;
@@ -26,7 +28,7 @@ const onload = () => {
                 classesDiv.innerHTML += `
                 <div class="class">
                     <div class="name"><span title="${cur.name}">${cur.name}</span></div>
-                    <div class="more"><a href="../../class/index.html?id=${cur._id}">Mais</a></div>
+                    <div class="more"><a href="../../class/?id=${cur._id}">Mais</a></div>
                 </div>
                 `;
             })
@@ -39,13 +41,15 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        }
+        },
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
-                alert('Você não tem permissão para modificar esse aluno. Não foi você quem fez essa chamada!');
-                window.location.assign('../home/teacher');
+                alert('Você não tem acesso a esta página. Redirecionando para página de login.');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             throw new Error(res);
         })
@@ -83,7 +87,7 @@ const onload = () => {
 
 const leave = () => {
     localStorage.clear();
-    window.location.assign('../login/');
+    window.location.href = `${window.location.origin}/class-presence/login`;
 }
 
 window.addEventListener('load', onload);

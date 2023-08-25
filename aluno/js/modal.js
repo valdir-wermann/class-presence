@@ -13,13 +13,15 @@ const update = () => {
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
         },
-        body: JSON.stringify({ type: typeSelect.value })
+        body: JSON.stringify({ type: typeSelect.value }),
+        mode: 'no-cors'
     })
         .then(res => {
             if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
-                alert('Você não tem permissão para modificar essa presença. Não foi você quem fez essa chamada!');
-                window.location.assign('../home/teacher');
+                alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
             }
             throw new Error(res);
         })
