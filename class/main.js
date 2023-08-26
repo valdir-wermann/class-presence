@@ -21,8 +21,7 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        },
-        mode: 'no-cors'
+        }
     })
         .then(res => {
             type = res.headers.get('user');
@@ -49,8 +48,7 @@ const onload = () => {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Authorization': localStorage.getItem('authorization')
-                },
-                mode: 'no-cors'
+                }
             }).then(res => {
                 if (res.ok) return res.json();
                 if (res.status === 401 || res.status === 403) {
@@ -75,8 +73,7 @@ const onload = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
-        },
-        mode: 'no-cors'
+        }
     })
         .then(res => {
             if (res.ok) return res.json();

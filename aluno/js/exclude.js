@@ -9,8 +9,7 @@ const exclude = (e) => {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': localStorage.getItem('authorization')
-            },
-            mode: 'no-cors'
+            }
         })
             .then(res => {
                 if (res.ok) return res.json();

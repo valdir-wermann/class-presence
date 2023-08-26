@@ -18,8 +18,7 @@ const entrar = () => {
     fetch(url + path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify(body),
-        mode: 'no-cors'
+        body: JSON.stringify(body)
     })
         .then(response => {
             if (response.ok) {

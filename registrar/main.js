@@ -29,8 +29,8 @@ const registrar = () => {
     fetch(url + path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
-        body: JSON.stringify(body),
-        mode: 'no-cors'
+        body: JSON.stringify(body)
+        // mode: 'no-cors'
     })
         .then(response => {
             if (response.ok) return response.json();

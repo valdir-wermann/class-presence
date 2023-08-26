@@ -13,8 +13,7 @@ const removeTeachers = () => {
             'Access-Control-Allow-Origin': '*',
             'Authorization': localStorage.getItem('authorization')
         },
-        body,
-        mode: 'no-cors'
+        body
     })
         .then(res => {
             if (res.ok) return res.json();

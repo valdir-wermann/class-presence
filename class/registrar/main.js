@@ -96,8 +96,7 @@ const registrar = () => {
             description: descriptionInput.value,
             date: dateInput.value,
             periods: periodsInput.value
-        }),
-        mode: 'no-cors'
+        })
     })
         .then(res => {
             if (res.ok) return res.json();
