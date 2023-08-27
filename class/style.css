@@ -59,6 +59,10 @@ body {
     cursor: pointer;
 }
 
+.action:hover {
+    color: #abafb6;
+}
+
 #subtitle {
     margin: 0 calc(5% + 12px);
 }
