@@ -88,7 +88,9 @@ const onload = () => {
             if (students.length === 0) return studList.innerHTML = '<h2>Não há alunos na turma.</h2>';
             studList.innerHTML = '';
             let html;
-            if (type === 'teacher') { html = (student) => `<li class="aluno aluno-hover"><a href="../aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>` }
+            if (type === 'teacher') {
+                html = (student) => `<li class="aluno aluno-hover"><a href="../aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>`
+            }
             else { html = (student) => `<li class="aluno"><a title="${student.name}">${student.name}</a></li>` }
             students.forEach(student => {
                 studList.innerHTML += html(student);

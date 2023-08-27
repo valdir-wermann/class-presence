@@ -22,7 +22,7 @@ const deleteClass = () => {
             })
             .then(() => {
                 alert('Turma deletada com sucesso! Redirecionando para a página inicial!');
-                window.location.assign('/frontend/home/teacher');
+                window.location.assign(`${window.location.origin}/class-presence/home/teacher`);
             });
     }
 }
