@@ -26,16 +26,14 @@ const generateReport = () => {
             alert('Algo deu errado. Tente novamente ou revise o campo de digitação!');
             throw new Error(res);
         })
-        .then((blob) => {
-            var a = window.document.createElement('a');
+        .then((content) => {
+            var blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+            var url = URL.createObjectURL(blob);
 
-            a.href = window.URL.createObjectURL(blob, {
-                type: 'text/plain'
-            });
-            a.download = `${params.id}-${Date.now()}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            var pom = document.createElement('a');
+            pom.href = url;
+            pom.setAttribute('download', `${params.id}-${Date.now()}`);
+            pom.click();
         })
 }
 
