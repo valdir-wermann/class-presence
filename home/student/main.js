@@ -72,7 +72,7 @@ const onload = () => {
                         </div>
                         <div class="center type">
                             <span class="status" 
-                            style="color: ${(pres.type === 'presente' ? '#6ab04c' : (pres.type === 'atrasado' ? '#f9ca24' : (pres.type === 'ausente' ? '#eb4d4b' : '')))}">
+                            style="color: ${(pres.type === 'presente' ? '#6ab04c' : (pres.type === 'atrasado' ? '#f9ca24' : (pres.type === 'ausente' ? '#eb4d4b' : (pres.type === 'fj') ? '#e67e22' : '')))}">
                             ${pres.type.toUpperCase()}</span>
                         </div>
                     </div>`;

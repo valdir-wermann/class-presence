@@ -21,10 +21,11 @@ const makeReport = () => {
         .then(att => {
             let writing = '';
             Object.entries(att).forEach(([nome, faltas]) => {
-                writing += `${nome}: DE ${faltas.presente + faltas.ausente + faltas.atrasado} PERÍODOS FORAM: {
+                writing += `${nome}: DE ${faltas.presente + faltas.ausente + faltas.atrasado + faltas.fj} PERÍODOS FORAM: {
                     PRESENTE: ${faltas.presente}
                     ATRASADO: ${faltas.atrasado}
                     AUSENTE: ${faltas.ausente}
+                    FALTA JUSTIFICADA: ${faltas.fj}
                 }
 `
             });

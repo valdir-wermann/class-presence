@@ -52,6 +52,9 @@
                 <div class="action" id="registrar-presenca">
                     <span>Registrar presença</span>
                 </div>
+                <div class="action" id="relatorio-presencas">
+                    <span>Relatório</span>
+                </div>
             </div>
 
             <h2 id="subtitle">Alunos:</h2>
@@ -120,6 +123,23 @@
                 <button class="doAction" id="remove-professores-btn">Remover</button>
             </div>
         </div>
+
+        <div class="modal" id="report-modal">
+            <div class="form">
+                <div class="right">
+                    <button id="fechar-report">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="input">
+                    <span>Data inicial:</span>
+                    <input id="start-report" type="date" />
+                    <span>Data final:</span>
+                    <input id="end-report" type="date" />
+                </div>
+                <button class="doAction" id="report-btn">Gerar</button>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -131,5 +151,6 @@
 <script src="./js/remove-teacher.js"></script>
 <script src="./js/exclude-class.js"></script>
 <script src="./js/registrar-presenca.js"></script>
+<script src="./js/report.js"></script>
 
 </html>
