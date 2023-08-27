@@ -63,39 +63,40 @@ const onload = () => {
 
                     teachersSpan.innerHTML = `Professores: ${writing}`;
                     teachersSpan.title = `Professores: ${writing}`;
+
+                    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': localStorage.getItem('authorization'),
+                            'ngrok-skip-browser-warning': 'true'
+                        }
+                    })
+                        .then(res => {
+                            if (res.ok) return res.json();
+                            if (res.status === 401 || res.status === 403) {
+                                alert('Você não tem permissão para visualizar essa turma. Te redirecionando para sua página inicial.');
+                                localStorage.clear();
+                                window.location.href = `${window.location.origin}/class-presence/login`;
+                            }
+                            throw new Error(res);
+                        })
+                        .then(students => {
+                            if (students.length === 0) return studList.innerHTML = '<h2>Não há alunos na turma.</h2>';
+                            studList.innerHTML = '';
+                            let html;
+                            if (type === 'teacher') {
+                                html = (student) => `<li class="aluno aluno-hover"><a href="../aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>`
+                            }
+                            else { html = (student) => `<li class="aluno"><a title="${student.name}">${student.name}</a></li>` }
+                            students.forEach(student => {
+                                studList.innerHTML += html(student);
+                            })
+                        })
                 });
         });
 
     //fetch students
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
-        }
-    })
-        .then(res => {
-            if (res.ok) return res.json();
-            if (res.status === 401 || res.status === 403) {
-                alert('Você não tem permissão para visualizar essa turma. Te redirecionando para sua página inicial.');
-                localStorage.clear();
-                window.location.href = `${window.location.origin}/class-presence/login`;
-            }
-            throw new Error(res);
-        })
-        .then(students => {
-            if (students.length === 0) return studList.innerHTML = '<h2>Não há alunos na turma.</h2>';
-            studList.innerHTML = '';
-            let html;
-            if (type === 'teacher') {
-                html = (student) => `<li class="aluno aluno-hover"><a href="../aluno/?id=${student._id}" title="${student.card} - ${student.name}">${student.card} - ${student.name}</a></li>`
-            }
-            else { html = (student) => `<li class="aluno"><a title="${student.name}">${student.name}</a></li>` }
-            students.forEach(student => {
-                studList.innerHTML += html(student);
-            })
-        })
 }
 
 window.addEventListener('load', onload);

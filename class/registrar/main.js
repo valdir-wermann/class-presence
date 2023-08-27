@@ -64,6 +64,7 @@ const onload = () => {
                                 <option value="presente">Presente</option>
                                 <option value="atrasado">Atrasado</option>
                                 <option value="ausente">Ausente</option>
+                                <option value="fj">Falta Justificada</option>
                             </select>
                         </div>
                         `;
