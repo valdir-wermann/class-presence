@@ -5,8 +5,8 @@ const makeReport = () => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Authorization': localStorage.getItem('authorization')
+            'Authorization': localStorage.getItem('authorization'),
+            'ngrok-skip-browser-warning': 'true'
         }
     })
         .then(res => {

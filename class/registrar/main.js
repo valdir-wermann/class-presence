@@ -3,7 +3,7 @@ const params = Object.fromEntries(urlSearchParams.entries());
 
 if (!params.id) {
     alert('O id está faltando na URL. Redirecionando para página inicial.');
-    window.location.assign('../home/teacher');
+    window.location.assign(`${window.location.origin}/home/teacher/`);
 }
 
 let studs;
@@ -20,10 +20,9 @@ const onload = () => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Authorization': localStorage.getItem('authorization')
-        },
-        mode: 'no-cors'
+            'Authorization': localStorage.getItem('authorization'),
+            'ngrok-skip-browser-warning': 'true'
+        }
     })
         .then(res => {
             if (res.ok) return res.json();
@@ -40,10 +39,9 @@ const onload = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Authorization': localStorage.getItem('authorization')
-                },
-                mode: 'no-cors'
+                    'Authorization': localStorage.getItem('authorization'),
+                    'ngrok-skip-browser-warning': 'true'
+                }
             })
                 .then(res => {
                     if (res.ok) return res.json();
@@ -88,8 +86,8 @@ const registrar = () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Authorization': localStorage.getItem('authorization')
+            'Authorization': localStorage.getItem('authorization'),
+            'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({
             students,

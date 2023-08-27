@@ -17,7 +17,10 @@ const entrar = () => {
 
     fetch(url + path, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
+        headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+        },
         body: JSON.stringify(body)
     })
         .then(response => {
