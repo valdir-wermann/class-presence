@@ -17,7 +17,7 @@ const generateReport = () => {
         }
     })
         .then(res => {
-            if (res.ok) return res.blob();
+            if (res.ok) return res.json();
             if (res.status === 401 || res.status === 403) {
                 alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
                 localStorage.clear();
@@ -27,6 +27,7 @@ const generateReport = () => {
             throw new Error(res);
         })
         .then((content) => {
+            content = content.replaceAll('\n', '\r\n');
             var blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
             var url = URL.createObjectURL(blob);
 
