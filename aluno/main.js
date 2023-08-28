@@ -74,8 +74,8 @@ const onload = () => {
                     hour = (hour.slice(0, 2)) - 3 + ':' + hour.slice(3, 5); // neste caso o mongodb armazena o horário em UTC, mas como estamos no brasil = -3
                     html += `
                     <div class="presenca">
-                        <div class="column">
-                            <span>Dia ${date}</span><span>às ${hour} por ${pres.periods} períodos</span>
+                        <div class="column date-hour" id="${pres._id}">
+                            <span id="${pres._id}">Dia ${date}</span><span id="${pres._id}">às ${hour} por ${pres.periods} períodos</span>
                         </div>
                         <div class="description">
                             <span id=${pres._id}"">${pres.description.toUpperCase()}</span>
@@ -101,6 +101,9 @@ const onload = () => {
                 document.querySelectorAll('.deleteBtn').forEach(_ => {
                     _.addEventListener('click', exclude);
                 });
+                document.querySelectorAll('.date-hour').forEach(_ => {
+                    _.addEventListener('click', lessonReport);
+                })
             })
         })
 }

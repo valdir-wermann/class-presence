@@ -27,7 +27,6 @@ const generateReport = () => {
             throw new Error(res);
         })
         .then((content) => {
-            content = content.replaceAll('\n', '\r\n');
             var blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
             var url = URL.createObjectURL(blob);
 

@@ -90,6 +90,15 @@ body {
     padding: 0px 2px;
 }
 
+.date-hour {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.date-hour:hover {
+    color: #abafb6;
+}
+
 .center {
     display: flex;
     justify-content: center;
