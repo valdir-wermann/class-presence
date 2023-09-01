@@ -6,12 +6,11 @@ const submitBtn = document.querySelector('#submit-btn');
 
 const createClass = () => {
     const body = JSON.stringify({ name: nameInput.value });
-    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes', {
+    fetch('https://class-presence-backend.onrender.com/api/classes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body
     })

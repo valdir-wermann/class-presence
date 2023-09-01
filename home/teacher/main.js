@@ -1,11 +1,10 @@
 const classes = document.querySelector('.classes'); classes.innerHTML = '';
 const onload = async () => {
-    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes?teacherId=own', {
+    fetch('https://class-presence-backend.onrender.com/api/classes?teacherId=own', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

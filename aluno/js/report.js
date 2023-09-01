@@ -1,12 +1,11 @@
 const reportButton = document.querySelector('#reportGeral');
 
 const makeReport = () => {
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?count=true&studentId=${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/?count=true&studentId=${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

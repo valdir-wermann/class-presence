@@ -6,12 +6,11 @@ const addTeachersBtn = document.querySelector('#add-professor-btn');
 
 const addTeachers = () => {
     const body = JSON.stringify({ identifiers: teacherEmailsInput.value });
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/add_teacher/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/classes/add_teacher/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body
     })

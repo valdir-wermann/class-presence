@@ -3,12 +3,11 @@ const exclude = (e) => {
 
     if (ans == 1) {
         const id = e.target.id;
-        fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${id}`, {
+        fetch(`https://class-presence-backend.onrender.com/api/attendances/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('authorization'),
-                'ngrok-skip-browser-warning': 'true'
+                'Authorization': localStorage.getItem('authorization')
             }
         })
             .then(res => {

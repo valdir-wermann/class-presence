@@ -4,12 +4,11 @@ const attendanceList = document.querySelector('.presencas');
 const onload = () => {
     document.querySelector('#username').innerHTML = JSON.parse(localStorage.getItem('user')).name;
     //fetch minhas turmas
-    fetch('https://causal-scorpion-rapidly.ngrok-free.app/api/classes', {
+    fetch('https://class-presence-backend.onrender.com/api/classes', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {
@@ -34,12 +33,11 @@ const onload = () => {
         });
 
     //fetch presencas
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?groupBy=classId`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/?groupBy=classId`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

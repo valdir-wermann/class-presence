@@ -6,12 +6,11 @@ const updateBtn = document.querySelector('.modificar>button');
 let attendanceId;
 
 const update = () => {
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${attendanceId}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/${attendanceId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body: JSON.stringify({ type: typeSelect.value })
     })

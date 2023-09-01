@@ -6,12 +6,11 @@ const removeStudentBtn = document.querySelector('#remove-alunos-btn');
 
 const removeStudents = () => {
     const body = JSON.stringify({ identifiers: removeStudentsEmailsInput.value });
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students/remove_class/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/students/remove_class/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body
     })

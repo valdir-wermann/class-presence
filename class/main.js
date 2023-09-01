@@ -15,12 +15,11 @@ var type;
 
 const onload = () => {
     // fetch class info and teacher info
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/classes/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {
@@ -42,12 +41,11 @@ const onload = () => {
             classTitle.innerHTML = `Turma ${clas.name}`;
             classTitle.title = `Turma ${clas.name}`;
 
-            fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/teachers?ids=${clas.teacherId.join(',')}`, {
+            fetch(`https://class-presence-backend.onrender.com/api/teachers?ids=${clas.teacherId.join(',')}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('authorization'),
-                    'ngrok-skip-browser-warning': 'true'
+                    'Authorization': localStorage.getItem('authorization')
                 }
             }).then(res => {
                 if (res.ok) return res.json();
@@ -64,12 +62,11 @@ const onload = () => {
                     teachersSpan.innerHTML = `Professores: ${writing}`;
                     teachersSpan.title = `Professores: ${writing}`;
 
-                    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
+                    fetch(`https://class-presence-backend.onrender.com/api/students?classId=${params.id}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': localStorage.getItem('authorization'),
-                            'ngrok-skip-browser-warning': 'true'
+                            'Authorization': localStorage.getItem('authorization')
                         }
                     })
                         .then(res => {

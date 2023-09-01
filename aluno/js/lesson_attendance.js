@@ -1,10 +1,9 @@
 const lessonReport = (e) => {
     console.log(e);
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/lessonAttendance/${e.target.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/lessonAttendance/${e.target.id}`, {
         method: 'GET',
         headers: {
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

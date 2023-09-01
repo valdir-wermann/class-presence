@@ -3,12 +3,11 @@ const excludeClassButton = document.querySelector('#excluir-turma');
 const deleteClass = () => {
     const confirm = prompt(`Essa ação é irreversível. Se quiser continuar essa ação, digite [${Class.name}] e confirme.`);
     if (confirm === Class.name) {
-        fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${Class._id}`, {
+        fetch(`https://class-presence-backend.onrender.com/api/classes/${Class._id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('authorization'),
-                'ngrok-skip-browser-warning': 'true'
+                'Authorization': localStorage.getItem('authorization')
             }
         })
             .then(res => {

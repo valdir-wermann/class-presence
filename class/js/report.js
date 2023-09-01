@@ -9,11 +9,10 @@ const generateReportBtn = document.querySelector('#report-btn');
 const generateReport = () => {
     if (startInput.value === '' || endInput.value === '') return alert('Por favor, insira datas válidas!');
 
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${params.id}?start=${startInput.value}T00:00&end=${endInput.value}T23:59`, {
-        method: 'POST',
+    fetch(`https://class-presence-backend.onrender.com/api/classes/class_report/${params.id}?start=${startInput.value}T00:00&end=${endInput.value}T23:59`, {
+        method: 'GET',
         headers: {
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {
@@ -34,6 +33,9 @@ const generateReport = () => {
             pom.href = url;
             pom.setAttribute('download', `${params.id}-${Date.now()}`);
             pom.click();
+            closeModalBtn.click();
+            startInput.value = '';
+            endInput.value = '';
         })
 }
 

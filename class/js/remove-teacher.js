@@ -6,12 +6,11 @@ const removeTeacherBtn = document.querySelector('#remove-professores-btn');
 
 const removeTeachers = () => {
     const body = JSON.stringify({ identifiers: removeTeacherEmailsInput.value });
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/remove_teacher/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/classes/remove_teacher/${params.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body
     })

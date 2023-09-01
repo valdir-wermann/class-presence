@@ -14,12 +14,11 @@ const studentCard = document.querySelector('#studentCard');
 let student;
 
 const onload = () => {
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/students/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {
@@ -43,12 +42,11 @@ const onload = () => {
             studentCard.title = student.card;
         })
 
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/?studentId=${params.id}&groupBy=classId`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/?studentId=${params.id}&groupBy=classId`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

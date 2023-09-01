@@ -1,4 +1,4 @@
-const url = 'https://causal-scorpion-rapidly.ngrok-free.app';
+const url = 'https://class-presence-backend.onrender.com';
 
 const tipo = document.querySelector('#tipo');
 const nome = document.querySelector('#nome');
@@ -29,8 +29,7 @@ const registrar = () => {
     fetch(url + path, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': 'true'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
     })

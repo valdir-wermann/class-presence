@@ -1,11 +1,10 @@
 const listaAlunosBtn = document.querySelector('#lista-alunos');
 
-const listaAlunos = (e) => {
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/student_list/${params.id}`, {
+const listaAlunos = () => {
+    fetch(`https://class-presence-backend.onrender.com/api/classes/student_list/${params.id}`, {
         method: 'GET',
         headers: {
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {

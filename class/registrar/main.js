@@ -16,12 +16,11 @@ const studentsList = document.querySelector('.students');
 const registrarBtn = document.querySelector('.registrar>button');
 
 const onload = () => {
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/classes/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/classes/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         }
     })
         .then(res => {
@@ -35,12 +34,11 @@ const onload = () => {
         })
         .then(clas => {
             className.innerHTML = `Registrar presença: ${clas.name}`;
-            fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/students?classId=${params.id}`, {
+            fetch(`https://class-presence-backend.onrender.com/api/students?classId=${params.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('authorization'),
-                    'ngrok-skip-browser-warning': 'true'
+                    'Authorization': localStorage.getItem('authorization')
                 }
             })
                 .then(res => {
@@ -83,12 +81,11 @@ const registrar = () => {
     if (periodsInput.value < 0 || periodsInput.value === '') return alert('Digite uma quantidade de períodos válida!');
     if (dateInput.value === '') return alert('Digite uma data válida!');
 
-    fetch(`https://causal-scorpion-rapidly.ngrok-free.app/api/attendances/${params.id}`, {
+    fetch(`https://class-presence-backend.onrender.com/api/attendances/${params.id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('authorization'),
-            'ngrok-skip-browser-warning': 'true'
+            'Authorization': localStorage.getItem('authorization')
         },
         body: JSON.stringify({
             students,
