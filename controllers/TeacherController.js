@@ -15,20 +15,27 @@ class TeacherController {
         if (name) where.name = RegExp(name, 'i');
         if (email) where.email = email;
 
+        let select = '-password';
+        if (req.student) { select = '-_id -card -password' }
+
         Teacher
-            .find(where)
+            .find(where, select)
             .then(teachers => res.status(200).json(teachers))
             .catch(error => res.status(400).json({ error }));
     }
 
     findOne(req, res) {
-        Teacher.findById(req.params.id)
+        let select = '-password';
+        if (req.student) { select = '-_id -card -password' }
+
+        Teacher.findById(req.params.id, select)
             .then(teacher => res.status(200).json(teacher))
             .catch(error => res.status(400).json(error));
     }
 
     async create(req, res) {
         const { name, email, card, password } = req.body;
+        console.log(req.body);
 
         if (!name || !email || !card || !password) res.status(400).json({ error: "Invalid values!" });
         if ((await Code.find({ code: req.body.code })).length === 0) return res.status(400).json({ error: 'Unable to create account without a valid token!' })

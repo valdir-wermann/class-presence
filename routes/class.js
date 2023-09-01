@@ -13,4 +13,7 @@ Router.put('/remove_teacher/:id', teacher_auth, ClassController.removeTeacher);
 
 Router.delete('/:id', teacher_auth, ClassController.delete);
 
+Router.get('/student_list/:id', teacher_auth, ClassController.generateStudentList);
+Router.post('/:id', teacher_auth, ClassController.generateReport);
+
 module.exports = Router;

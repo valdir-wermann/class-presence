@@ -7,8 +7,10 @@ const { auth, teacher_auth } = require('../middlewares/auth');
 
 Router.get('/', auth, AttendanceController.findAll);
 Router.get('/:id', auth, AttendanceController.findOne);
+Router.get('/lessonAttendance/:id', teacher_auth, AttendanceController.lessonAttendance);
 Router.post('/:id', teacher_auth, AttendanceController.create);
 Router.put('/:id', teacher_auth, AttendanceController.update);
 Router.delete('/:id', teacher_auth, AttendanceController.delete);
+
 
 module.exports = Router;

@@ -3,6 +3,8 @@ const Teacher = require('../models/Teacher');
 const Student = require('../models/Student');
 const Attendance = require('../models/Attendance');
 
+const _ = require('underscore');
+const fs = require('fs');
 class ClassController {
     async findAll(req, res) {
         const { name, teacherId } = req.query;
@@ -81,10 +83,9 @@ class ClassController {
         if (!req.body.identifiers) return res.status(400).json({ error: 'Missing body identifiers' });
 
         const identifiers = req.body.identifiers.split(',');
-        const cardformat = /^[0-9]{8}$/g;
 
-        const cards = identifiers.filter(t => cardformat.test(t));
-        const emails = identifiers.filter(t => !cardformat.test(t));
+        const cards = identifiers.filter(t => (/^[0-9]{8}$/g).test(t));
+        const emails = identifiers.filter(t => !(/^[0-9]{8}$/g).test(t));
 
         const teachersId = (await Teacher.find({ $or: [{ email: { $in: emails } }, { card: { $in: cards } }] })).map(val => val._id);
         cl.teacherId.push(...teachersId);
@@ -101,16 +102,15 @@ class ClassController {
             if (!req.body.identifiers) return res.status(400).json({ error: 'Missing body identifiers' });
 
             const identifiers = req.body.identifiers.split(',');
-            const cardformat = /^[0-9]{8}$/g;
 
-            const cards = identifiers.filter(t => cardformat.test(t));
-            const emails = identifiers.filter(t => !cardformat.test(t));
+            const cards = identifiers.filter(t => (/^[0-9]{8}$/g).test(t));
+            const emails = identifiers.filter(t => !(/^[0-9]{8}$/g).test(t));
 
             const ids = (await Teacher.find({ $or: [{ email: { $in: emails } }, { card: { $in: cards } }] })).map(teacher => teacher._id.toString());
             cl.teacherId = cl.teacherId.filter(_ => !ids.includes(_));
-            cl.save().then(() => res.status(200).json({ msg: 'successfully removed teachers from class!' }))
+            if (cl.teacherId.length === 0) return res.status(400).json({ error: 'Cannot remove all teachers from a class!' });
+            cl.save().then(() => res.status(200).json({ msg: 'successfully removed teachers from class!' }));
         } catch (error) {
-            console.log('trying')
             res.status(400).json({ error, msg: 'yes' });
         }
     }
@@ -123,6 +123,47 @@ class ClassController {
         Class.findByIdAndDelete(req.params.id)
             .then(() => res.status(200).json({ msg: "Sucessfully deleted!" }))
             .catch(error => res.status(400).json({ error }));
+    }
+
+    async generateStudentList(req, res) {
+        try {
+            const cl = await Class.findById(req.params.id);
+            if (!cl.teacherId.includes(req.teacher._id)) return res.status(403).json({ error: 'Not your class!' });
+
+            const students = await Student.find({ classId: { $in: [req.params.id] } });
+            return res.status(200).json(students.map(st => st.card).join(','));
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }
+
+    async generateReport(req, res) {
+        const { start, end } = req.query; // iso dates
+        try {
+            let attendances = await Attendance.find({ classId: req.params.id, date: { $gte: start, $lt: end } });
+            attendances = _.groupBy(attendances, 'studentId'); //faltas da turma agrupado por alunos
+            let students = await Student.find({ _id: { $in: Object.keys(attendances) } });
+            students = _.groupBy(students, '_id');
+
+            const map = {}; // contabilizar total de faltas
+            Object.entries(attendances).forEach(([studentId, attendance]) => {
+                map[studentId] = { faltas: 0, presencas: 0 };
+                attendance.forEach(att => {
+                    if (att.type === 'presente' || att.type === 'atrasado') { map[studentId].presencas += att.periods }
+                    else { map[studentId].faltas += att.periods }
+                });
+            });
+
+            let writingData = 'Cartão,Nome,Presenças,Faltas,Aulas Totais';
+
+            Object.entries(map).forEach(([id, total]) => {
+                writingData += `\r\n${students[id][0].card},${students[id][0].name},${total.presencas},${total.faltas},${total.presencas + total.faltas}`
+            });
+
+            res.status(200).json(writingData);
+        } catch (error) {
+            res.status(400).json(error);
+        }
     }
 }
 

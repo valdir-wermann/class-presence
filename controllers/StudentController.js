@@ -14,14 +14,20 @@ class StudentController {
         if (email) where.email = email;
         if (classId) where.classId = { $in: [classId] };
 
+        let select = '-password';
+        if (req.student) { select = '-_id -email -card -password -classId' }
+
         Student
-            .find(where)
+            .find(where, select)
             .then(students => res.status(200).json(students))
             .catch(error => res.status(400).json(error));
     }
 
     findOne(req, res) {
-        Student.findById(req.params.id)
+        let select = '-password';
+        if (req.student) { select = '-_id -email -card -password -classId' }
+
+        Student.findById(req.params.id, select)
             .then(student => res.status(200).json(student))
             .catch(error => res.status(400).json(error));
     }
@@ -79,13 +85,16 @@ class StudentController {
     async addClass(req, res) {
         let { identifiers } = req.body;
 
-        if (!identifiers) res.status(400).json({ error: 'Missing body identifier' })
+        if (!identifiers) res.status(400).json({ error: 'Missing body identifier' });
+        console.log(identifiers);
 
         identifiers = identifiers.split(',');
-        const cardformat = /^[0-9]{8}$/g;
+        console.log(identifiers);
 
-        const cards = identifiers.filter(t => cardformat.test(t));
-        const emails = identifiers.filter(t => !cardformat.test(t));
+        const cards = identifiers.filter(t => (/^[0-9]{8}$/g).test(t));
+        const emails = identifiers.filter(t => !(/^[0-9]{8}$/g).test(t));
+
+        console.log({ cards, emails });
 
         try {
             const cl = await Class.findById(req.params.id);
@@ -106,21 +115,20 @@ class StudentController {
     async removeClass(req, res) {
         let { identifiers } = req.body;
 
-        if (!identifiers) res.status(400).json({ error: 'Missing body identifier' })
+        if (!identifiers) res.status(400).json({ error: 'Missing body identifier' });
 
         identifiers = identifiers.split(',');
-        const cardformat = /^[0-9]{8}$/g;
 
-        const cards = identifiers.filter(t => cardformat.test(t));
-        const emails = identifiers.filter(t => !cardformat.test(t));
+        const cards = identifiers.filter(t => (/^[0-9]{8}$/g).test(t));
+        const emails = identifiers.filter(t => !(/^[0-9]{8}$/g).test(t));
 
         try {
             const cl = await Class.findById(req.params.id);
             if (!cl.teacherId.includes(req.teacher._id)) return res.status(403).json({ error: 'You are not allowed to do that! Not the teacher of class!' });
 
-            await Attendance.deleteMany({ studentId: { $in: emails }, classId: req.params.id });
             Student.find({ $or: [{ email: { $in: emails } }, { card: { $in: cards } }] })
-                .then(students => {
+                .then(async students => {
+                    await Attendance.deleteMany({ studentId: { $in: students.map(st => st._id) }, classId: req.params.id });
                     students.forEach(student => {
                         student.classId = student.classId.filter(_ => _ !== req.params.id);
                         student.save();

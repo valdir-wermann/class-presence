@@ -1,5 +1,7 @@
 const Attendance = require('../models/Attendance');
 const Class = require('../models/Class');
+const Student = require('../models/Student');
+
 const _ = require('underscore');
 
 class AttendanceController {
@@ -32,7 +34,7 @@ class AttendanceController {
                         map[key] = value.reduce((prev, cur) => {
                             prev[cur.type] += cur.periods;
                             return prev;
-                        }, { presente: 0, atrasado: 0, ausente: 0 });
+                        }, { presente: 0, atrasado: 0, ausente: 0, fj: 0 });
                     });
 
                     return res.status(200).json(map);
@@ -115,6 +117,34 @@ class AttendanceController {
             res.status(400).json({ error: 'Something went wrong!' })
         }
 
+    }
+
+    async lessonAttendance(req, res) {
+        try {
+            const attendance = await Attendance.findById(req.params.id);
+            let { date, classId, teacherId } = attendance;
+            const attendances = await Attendance.find({ date, classId, teacherId });
+            let students = await Student.find({ _id: { $in: attendances.map(at => at.studentId) } });
+            students = _.groupBy(students, '_id');
+
+            date = new Date(date);
+
+            const typeMap = {
+                'presente': 'PRESENTE',
+                'ausente': 'AUSENTE',
+                'atrasado': 'ATRASADO',
+                'fj': 'FALTA JUSTIFICADA'
+            }
+            let csvWriting = `Cartão,Nome,Tipo,Dia: ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - às ${date.getHours()}:${date.getMinutes()} por ${attendance.periods} períodos`;
+            attendances.forEach(at => {
+                csvWriting += `\r\n${students[at.studentId][0].card},${students[at.studentId][0].name},${typeMap[at.type]}`;
+            });
+
+            res.status(200).json(csvWriting);
+        }
+        catch (error) {
+            res.status(400).json(error);
+        }
     }
 }
 
