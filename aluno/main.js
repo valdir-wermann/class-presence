@@ -40,7 +40,7 @@ const onload = () => {
 
             studentCard.innerHTML = 'Cartão: ' + student.card;
             studentCard.title = student.card;
-        })
+        });
 
     fetch(`https://class-presence-backend.onrender.com/api/attendances/?studentId=${params.id}&groupBy=classId`, {
         method: 'GET',
@@ -69,7 +69,7 @@ const onload = () => {
                 m[1].forEach(pres => {
                     let [date, hour] = pres.date.split('T');
                     date = date.split('-').reverse().join('/');
-                    hour = (hour.slice(0, 2)) - 3 + ':' + hour.slice(3, 5); // neste caso o mongodb armazena o horário em UTC, mas como estamos no brasil = -3
+                    hour = (hour.slice(0, 2)) + ':' + hour.slice(3, 5);
                     html += `
                     <div class="presenca">
                         <div class="column date-hour" id="${pres._id}">

@@ -34,41 +34,43 @@ const onload = () => {
         })
         .then(clas => {
             className.innerHTML = `Registrar presença: ${clas.name}`;
-            fetch(`https://class-presence-backend.onrender.com/api/students?classId=${params.id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('authorization')
-                }
-            })
-                .then(res => {
-                    if (res.ok) return res.json();
-                    if (res.status === 401 || res.status === 403) {
-                        alert('Você não pode fazer isso. Redirecionando para página inicial.');
-                        localStorage.clear();
-                        window.location.href = `${window.location.origin}/class-presence/login`;
-                    }
-                    throw new Error(res);
-                })
-                .then(students => {
-                    if (students.length === 0) return studentsList.innerHTML = '<h2>Não há alunos na turma.</h2>';
-                    studs = students;
-                    studentsList.innerHTML = '';
-                    students.forEach(student => {
-                        studentsList.innerHTML += `
-                        <div class="student">
-                            <span title="${student.card} - ${student.name}">${student.card} - ${student.name}</span>
-                            <select class="tipo" id="${student._id}">
-                                <option value="presente">Presente</option>
-                                <option value="atrasado">Atrasado</option>
-                                <option value="ausente">Ausente</option>
-                                <option value="fj">Falta Justificada</option>
-                            </select>
-                        </div>
-                        `;
-                    });
-                })
+        });
+
+    fetch(`https://class-presence-backend.onrender.com/api/students?classId=${params.id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('authorization')
+        }
+    })
+        .then(res => {
+            if (res.ok) return res.json();
+            if (res.status === 401 || res.status === 403) {
+                alert('Você não pode fazer isso. Redirecionando para página inicial.');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
+            }
+            throw new Error(res);
         })
+        .then(students => {
+            if (students.length === 0) return studentsList.innerHTML = '<h2>Não há alunos na turma.</h2>';
+            studs = students;
+            studentsList.innerHTML = '';
+            students.forEach(student => {
+                studentsList.innerHTML += `
+                    <div class="student">
+                        <span title="${student.card} - ${student.name}">${student.card} - ${student.name}</span>
+                        <select class="tipo" id="${student._id}">
+                            <option value="presente">Presente</option>
+                            <option value="atrasado">Atrasado</option>
+                            <option value="ausente">Ausente</option>
+                            <option value="fj">Falta Justificada</option>
+                        </select>
+                    </div>
+                    `;
+            });
+        })
+
 }
 
 const registrar = () => {

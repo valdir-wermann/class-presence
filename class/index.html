@@ -33,32 +33,7 @@
                 </div>
             </div>
 
-            <div class="actions">
-                <div class="action" id="adicionar-alunos">
-                    <span>Adicionar Alunos</span>
-                </div>
-                <div class="action" id="remover-alunos">
-                    <span>Remover Alunos</span>
-                </div>
-                <div class="action" id="adicionar-professores">
-                    <span>Adicionar Professores</span>
-                </div>
-                <div class="action" id="remover-professores">
-                    <span>Remover Professores</span>
-                </div>
-                <div class="action" id="excluir-turma">
-                    <span>Excluir Sala</span>
-                </div>
-                <div class="action" id="registrar-presenca">
-                    <span>Registrar presença</span>
-                </div>
-                <div class="action" id="relatorio-presencas">
-                    <span>Relatório</span>
-                </div>
-                <div class="action" id="lista-alunos">
-                    <span>Lista Alunos</span>
-                </div>
-            </div>
+            <div class="actions"></div>
 
             <h2 id="subtitle">Alunos:</h2>
 
@@ -66,95 +41,9 @@
         </div>
     </div>
 
-    <div class="modals">
-        <div class="modal" id="add-student-modal">
-            <div class="form">
-                <div class="right">
-                    <button id="fechar-add-alunos">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                <div class="input">
-                    <span>Email ou Cartão dos Alunos (separado por ,):</span>
-                    <input id="add-emails-alunos" type="text" />
-                </div>
-                <button class="doAction" id="add-alunos-btn">Adicionar</button>
-            </div>
-        </div>
-
-        <div class="modal" id="remove-student-modal">
-            <div class="form">
-                <div class="right">
-                    <button id="fechar-remove-alunos">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                <div class="input">
-                    <span>Email ou Cartão dos Alunos (separado por ,):</span>
-                    <input id="remove-emails-alunos" type="text" />
-                </div>
-                <button class="doAction" id="remove-alunos-btn">Remover</button>
-            </div>
-        </div>
-
-        <div class="modal" id="add-teacher-modal">
-            <div class="form">
-                <div class="right">
-                    <button id="fechar-add-teacher">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                <div class="input">
-                    <span>Email ou Cartão dos Professores (separado por ,):</span>
-                    <input id="add-emails-professores" type="text" />
-                </div>
-                <button class="doAction" id="add-professor-btn">Adicionar</button>
-            </div>
-        </div>
-
-        <div class="modal" id="remove-teacher-modal">
-            <div class="form">
-                <div class="right">
-                    <button id="fechar-remove-professores">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                <div class="input">
-                    <span>Email ou Cartão dos Professores (separado por ,):</span>
-                    <input id="remove-emails-professores" type="text" />
-                </div>
-                <button class="doAction" id="remove-professores-btn">Remover</button>
-            </div>
-        </div>
-
-        <div class="modal" id="report-modal">
-            <div class="form">
-                <div class="right">
-                    <button id="fechar-report">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                <div class="input">
-                    <span>Data inicial:</span>
-                    <input id="start-report" type="date" />
-                    <span>Data final:</span>
-                    <input id="end-report" type="date" />
-                </div>
-                <button class="doAction" id="report-btn">Gerar</button>
-            </div>
-        </div>
-    </div>
+    <div class="modals"></div>
 </body>
 
 <script src="./main.js"></script>
-
-<script src="./js/add-student.js"></script>
-<script src="./js/remove-student.js"></script>
-<script src="./js/add-teacher.js"></script>
-<script src="./js/remove-teacher.js"></script>
-<script src="./js/exclude-class.js"></script>
-<script src="./js/registrar-presenca.js"></script>
-<script src="./js/report.js"></script>
-<script src="./js/lista-alunos.js"></script>
 
 </html>
