@@ -145,28 +145,29 @@ const onload = () => {
             Class = clas;
             classTitle.innerHTML = `Turma ${clas.name}`;
             classTitle.title = `Turma ${clas.name}`;
+        });
 
-            fetch(`https://class-presence-backend.onrender.com/api/teachers?ids=${clas.teacherId.join(',')}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('authorization')
-                }
-            }).then(res => {
-                if (res.ok) return res.json();
-                if (res.status === 401 || res.status === 403) {
-                    alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
-                    localStorage.clear();
-                    window.location.href = `${window.location.origin}/class-presence/login`;
-                }
-                throw new Error(res);
-            })
-                .then(teachers => {
-                    const writing = teachers.map(cur => cur.name + ' (' + cur.email + ')').join(', ');
+    fetch(`https://class-presence-backend.onrender.com/api/teachers?classId=${params.id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('authorization')
+        }
+    })
+        .then(res => {
+            if (res.ok) return res.json();
+            if (res.status === 401 || res.status === 403) {
+                alert('Você não tem acesso a essa ação. Redirecionando para página de login.');
+                localStorage.clear();
+                window.location.href = `${window.location.origin}/class-presence/login`;
+            }
+            throw new Error(res);
+        })
+        .then(teachers => {
+            const writing = teachers.map(cur => cur.name + ' (' + cur.email + ')').join(', ');
 
-                    teachersSpan.innerHTML = `Professores: ${writing}`;
-                    teachersSpan.title = `Professores: ${writing}`;
-                });
+            teachersSpan.innerHTML = `Professores: ${writing}`;
+            teachersSpan.title = `Professores: ${writing}`;
         });
 
     //fetch students
