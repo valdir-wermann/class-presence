@@ -19,7 +19,7 @@ const registrar = () => {
         email: email.value,
         card: cartao.value,
         password: senha.value,
-        codigo: codigo.value
+        code: codigo.value
     };
 
     if (tipo.value === 'teacher') {
