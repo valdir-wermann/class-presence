@@ -18,12 +18,12 @@ const registrar = () => {
         name: nome.value,
         email: email.value,
         card: cartao.value,
-        password: senha.value
+        password: senha.value,
+        codigo: codigo.value
     };
 
     if (tipo.value === 'teacher') {
         path = '/api/teachers/signup';
-        body.code = codigo.value;
     } else path = '/api/students/signup';
 
     fetch(url + path, {
@@ -59,13 +59,4 @@ const isCardValid = (card) => {
     return cardformat.test(card);
 }
 
-const alternarCodigo = (e) => {
-    if (e.target.value === 'teacher') {
-        codigo_field.style.display = 'block';
-    } else {
-        codigo_field.style.display = 'none';
-    }
-}
-
-tipo.addEventListener('change', alternarCodigo);
 registrar_btn.addEventListener('click', registrar);

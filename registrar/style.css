@@ -98,10 +98,6 @@ body {
   background-color: #F5F6F8;
 }
 
-.codigo-field {
-  display: none;
-}
-
 #entrar {
   display: flex;
   justify-content: center;
