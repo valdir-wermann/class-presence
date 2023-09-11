@@ -67,13 +67,12 @@ const onload = () => {
             presencas.forEach(m => {
                 html += `<h2>${m[0]}</h2>`;
                 m[1].forEach(pres => {
-                    let [date, hour] = pres.date.split('T');
+                    let [date] = pres.date.split('T');
                     date = date.split('-').reverse().join('/');
-                    hour = (hour.slice(0, 2)) + ':' + hour.slice(3, 5);
                     html += `
                     <div class="presenca">
                         <div class="column date-hour" id="${pres._id}">
-                            <span id="${pres._id}">Dia ${date}</span><span id="${pres._id}">às ${hour} por ${pres.periods} períodos</span>
+                            <span id="${pres._id}">Dia ${date}</span><span id="${pres._id}">por ${pres.periods} períodos</span>
                         </div>
                         <div class="description">
                             <span id=${pres._id}"">${pres.description.toUpperCase()}</span>
@@ -83,10 +82,10 @@ const onload = () => {
                             style="color: ${(pres.type === 'presente' ? '#6ab04c' : (pres.type === 'atrasado' ? '#f9ca24' : (pres.type === 'ausente' ? '#eb4d4b' : (pres.type === 'fj') ? '#e67e22' : '')))}">
                             ${pres.type.toUpperCase()}</span>
                         </div>
-                        ${pres.teacherId !== user.id ? '<div style="width: 98.09px"></div>' : `<div class="modify center">
+                        ${pres.teacherId === user.id ? `<div class="modify center">
                         <span class="modifyBtn" id="${pres._id}">Modificar</span>
                         <span class="deleteBtn" id="${pres._id}">Excluir</span>
-                    </div>`}
+                        </div>` : `<div class="modify center"></div>`}
                     </div>`;
                 });
                 attendanceList.innerHTML = html;

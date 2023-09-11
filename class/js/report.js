@@ -26,16 +26,26 @@ const generateReport = () => {
             throw new Error(res);
         })
         .then((content) => {
-            var blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
-            var url = URL.createObjectURL(blob);
+            var wb = XLSX.utils.book_new();
+            wb.Props = {
+                Title: `Relatório - ${params.id} - ${Date.now()}`,
+                Subject: "",
+                Author: "ClassPresence",
+                CreatedDate: new Date()
+            };
+            wb.SheetNames.push(params.id);
+            var ws = XLSX.utils.aoa_to_sheet(content);
+            wb.Sheets[params.id] = ws;
 
-            var pom = document.createElement('a');
-            pom.href = url;
-            pom.setAttribute('download', `${params.id}-${Date.now()}`);
-            pom.click();
-            closeModalBtn.click();
-            startInput.value = '';
-            endInput.value = '';
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+                var view = new Uint8Array(buf);  //create uint8array as viewer
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+                return buf;
+            }
+
+            saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), `${params.id}-${Date.now()}.xlsx`);
         })
 }
 

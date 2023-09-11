@@ -57,13 +57,12 @@ const onload = () => {
                 Object.entries(presencas).forEach(m => {
                     html += `<h2>${m[0]}</h2>`;
                     m[1].forEach(pres => {
-                        let [date, hour] = pres.date.split('T');
+                        let [date] = pres.date.split('T');
                         date = date.split('-').reverse().join('/');
-                        hour = (hour.slice(0, 2)) - 3 + ':' + hour.slice(3, 5); // neste caso o mongodb armazena o horário em UTC, mas como estamos no brasil = -3
                         html += `
                     <div class="presenca">
                         <div class="column">
-                            <span>Dia ${date}</span><span>às ${hour} por ${pres.periods} períodos</span>
+                            <span>Dia ${date}</span><span>por ${pres.periods} períodos</span>
                         </div>
                         <div class="description">
                             <span id=${pres._id}"">${pres.description.toUpperCase()}</span>

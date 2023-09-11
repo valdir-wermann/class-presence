@@ -126,7 +126,7 @@ const onload = () => {
                         <button class="doAction" id="report-btn">Gerar</button>
                     </div>
                 </div>`;
-                const js = ['./js/add-student.js', './js/add-teacher.js', './js/exclude-class.js', './js/lista-alunos.js', './js/registrar-presenca.js', './js/remove-student.js', './js/remove-teacher.js', './js/report.js'];
+                const js = ['./js/add-student.js', './js/add-teacher.js', './js/exclude-class.js', './js/lista-alunos.js', './js/registrar-presenca.js', './js/remove-student.js', './js/remove-teacher.js', './js/report.js', 'https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js'];
                 js.forEach(file => {
                     const element = document.createElement('script');
                     element.setAttribute('src', file);
