@@ -1,4 +1,4 @@
-const closeBtn = document.querySelector('#close-modal');
+const closeBtn = document.querySelectorAll('.close-modal');
 const modal = document.querySelector('#modal');
 const typeSelect = document.querySelector('#novoTipo');
 const updateBtn = document.querySelector('.modificar>button');
@@ -29,5 +29,5 @@ const update = () => {
         })
 }
 
-closeBtn.addEventListener('click', () => modal.style.visibility = 'hidden');
+closeBtn.forEach(_ => _.addEventListener('click', () => modal.style.visibility = 'hidden'));
 updateBtn.addEventListener('click', update);
