@@ -31,6 +31,7 @@ body {
     border-radius: 10px;
     background-color: #03436d;
     color: #F5F6F8;
+    word-wrap: break-word;
 }
 
 .actions {

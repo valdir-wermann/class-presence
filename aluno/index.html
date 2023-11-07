@@ -42,6 +42,8 @@
             <select id="info-select">
                 <option value="tipo">Tipo de presença</option>
                 <option value="date">Data da aula</option>
+                <option value="desc">Descrição da aula</option>
+                <option value="periods">Períodos da aula</option>
             </select>
         </div>
         <div class="form" id="tipo-form">
@@ -76,6 +78,36 @@
             </div>
             <div class="modificar">
                 <button id="modify-date-btn">Modificar Dia</button>
+            </div>
+        </div>
+
+        <div class="form" id="desc-form" style="display: none;">
+            <div class="right">
+                <button class="close-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="field" id="desc-field">
+                <span>Você deseja alterar a descrição para qual?</span>
+                <textarea class="input" id='desc-input'></textarea>
+            </div>
+            <div class="modificar">
+                <button id="modify-desc-btn">Modificar Descrição</button>
+            </div>
+        </div>
+
+        <div class="form" id="periods-form" style="display: none;">
+            <div class="right">
+                <button class="close-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="field" id="periods-field">
+                <span>Você deseja alterar os Períodos para qual?</span>
+                <input class="input" id='periods-input' type="number">
+            </div>
+            <div class="modificar">
+                <button id="modify-periods-btn">Modificar Períodos</button>
             </div>
         </div>
     </div>
